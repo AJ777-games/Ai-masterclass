@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How to Master AI Tools in 2026: Prompt Engineering from Scratch to Advanced — Masterclass</title>
+<meta name="description" content="Production-quality masterclass on prompt engineering for 2026: modules, techniques, playbooks, safety, and 30+ tool directory." />
+<style>
+:root{
+  --font-sys:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --bg:#f8fafc;
+  --bg-elev:#ffffff;
+  --fg:#0f172a;
+  --muted:#475569;
+  --border:#e2e8f0;
+  --accent:#4f46e5;
+  --accent-ink:#3730a3;
+  --accent-soft:#eef2ff;
+  --success:#059669;
+  --warning:#d97706;
+  --danger:#dc2626;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.05);
+  --radius:14px;
+  --radius-sm:10px;
+  --w-sidebar:300px;
+  --w-content:980px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-7:32px;
+  --space-8:40px;
+  --space-9:56px;
+}
+[data-theme="dark"]{
+  --bg:#0b1220;
+  --bg-elev:#0f172a;
+  --fg:#e2e8f0;
+  --muted:#94a3b8;
+  --border:#1e293b;
+  --accent:#818cf8;
+  --accent-ink:#c7d2fe;
+  --accent-soft:#1e1b4b;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-sys);
+  background:var(--bg);
+  color:var(--fg);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.skip-link{
+  position:absolute;left:-9999px;top:auto;
+}
+.skip-link:focus{
+  left:16px;top:16px;background:var(--bg-elev);padding:8px 12px;z-index:1000;border-radius:8px;box-shadow:var(--shadow)
+}
+header.site-header{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb, var(--bg-elev) 85%, transparent);
+  backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;gap:var(--space-4);
+  padding:12px var(--space-5);
+}
+.brand{
+  display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;
+}
+.brand-mark{
+  width:32px;height:32px;border-radius:9px;
+  background:linear-gradient(135deg,var(--accent),#06b6d4);
+  display:grid;place-items:center;color:white;font-weight:800;
+  box-shadow:var(--shadow);
+}
+.header-actions{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--border);
+  background:var(--bg-elev);
+  color:var(--fg);
+  padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;
+  cursor:pointer;transition:.2s;
+}
+.btn:hover{background:color-mix(in srgb,var(--bg-elev),var(--accent) 6%)}
+.btn.ghost{border-color:transparent;background:transparent}
+.btn.icon{padding:8px}
+.progress-wrap{
+  position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent;
+}
+.progress-bar{
+  height:100%;width:0;background:linear-gradient(90deg,var(--accent),#06b6d4);
+  transition:width.1s linear;
+}
+.layout{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:var(--w-sidebar) 1fr;gap:var(--space-7);
+  padding:var(--space-7) var(--space-5);
+}
+@media (max-width:1080px){
+ .layout{grid-template-columns:1fr}
+}
+.sidebar{
+  position:sticky;top:84px;align-self:start;
+  max-height:calc(100vh - 100px);overflow:auto;padding-right:4px;
+}
+@media (max-width:1080px){
+ .sidebar{
+    position:fixed;inset:64px auto 0 0;width:min(88vw,340px);
+    background:var(--bg-elev);border-right:1px solid var(--border);
+    transform:translateX(-102%);transition:transform.25s ease;
+    z-index:60;padding:20px;box-shadow:var(--shadow);
+  }
+ .sidebar.open{transform:none}
+ .sidebar-backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,.45);
+    opacity:0;pointer-events:none;transition:.2s;z-index:55;
+  }
+ .sidebar-backdrop.show{opacity:1;pointer-events:auto}
+}
+.toc-title{
+  font-size:12px;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--muted);font-weight:700;margin:0 0 12px;
+}
+.toc-list{
+  list-style:none;margin:0;padding:0;display:grid;gap:4px;
+}
+.toc-list a{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;border-radius:10px;color:var(--muted);
+  font-weight:500;font-size:14px;
+}
+.toc-list a:hover{background:var(--accent-soft);color:var(--fg);text-decoration:none}
+.toc-list a.active{
+  background:var(--accent-soft);color:var(--accent-ink);
+  font-weight:700;
+}
+.toc-list.num{
+  width:24px;height:24px;border-radius:7px;
+  background:var(--bg);border:1px solid var(--border);
+  display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted)
+}
+.toc-list a.active.num{background:var(--accent);color:white;border-color:var(--accent)}
+main{
+  min-width:0;
+}
+.hero{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent-soft),transparent 30%),transparent);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:var(--space-8);
+  box-shadow:var(--shadow);
+  margin-bottom:var(--space-8);
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent-ink);background:var(--accent-soft);padding:6px 10px;border-radius:999px;
+}
+h1{
+  font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.02em;margin:16px 0 12px;
+}
+.lede{font-size:18px;color:var(--muted);max-width:70ch}
+.meta-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;
+}
+@media (max-width:720px){.meta-grid{grid-template-columns:1fr 1fr}}
+.meta-card{
+  background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:14px;
+}
+.meta-card dt{font-size:12px;color:var(--muted);margin-bottom:4px}
+.meta-card dd{margin:0;font-weight:700}
+.section{
+  background:var(--bg-elev);border:1px solid var(--border);border-radius:var(--radius);
+  padding:var(--space-7);margin-bottom:var(--space-7);box-shadow:var(--shadow);
+}
+.section-header{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;
+}
+.section-title{
+  font-size:clamp(22px,3vw,30px);line-height:1.2;letter-spacing:-.01em;margin:0;
+}
+.section-kicker{
+  font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-ink);font-weight:700;
+}
+.prose{max-width:75ch}
+.prose p{margin:0 0 16px;color:var(--muted)}
+.prose h3{margin:28px 0 8px;font-size:20px}
+.callout{
+  border:1px solid var(--border);border-left:4px solid var(--accent);
+  background:color-mix(in srgb,var(--accent-soft),transparent 40%);
+  padding:14px 16px;border-radius:10px;margin:20px 0;
+}
+.callout strong{display:block;margin-bottom:4px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+.code-block{
+  position:relative;margin:18px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#0b1020;
+}
+.code-block pre{
+  margin:0;padding:16px;overflow:auto;font-family:var(--font-mono);font-size:13px;line-height:1.6;color:#e2e8f0;
+}
+.code-block.toolbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;background:#0f172a;border-bottom:1px solid #1e293b;color:#94a3b8;font-size:12px;
+}
+.copy-btn{
+  border:1px solid #334155;background:#1e293b;color:#e2e8f0;
+  padding:4px 8px;border-radius:8px;font-size:12px;cursor:pointer;
+}
+.copy-btn.copied{background:var(--success);border-color:var(--success);color:white}
+.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px;margin:20px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+th{text-align:left;background:color-mix(in srgb,var(--bg-elev),var(--accent) 4%);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+tr:last-child td{border-bottom:none}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:4px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink)}
+.badge.success{background:#dcfce7;color:#166534}
+.badge.warning{background:#fef3c7;color:#92400e}
+.exercise{
+  border:1px dashed var(--border);border-radius:12px;padding:16px;background:color-mix(in srgb,var(--bg-elev),var(--accent) 3%);
+}
+.exercise-title{font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.solution{
+  margin-top:12px;padding:12px;background:var(--bg-elev);border:1px solid var(--border);border-radius:10px;
+}
+.solution[hidden]{display:none}
+.quiz{
+  border:1px solid var(--border);border-radius:12px;padding:16px;background:var(--bg-elev);
+}
+.quiz h4{margin:0 0 10px}
+.quiz-options{display:grid;gap:8px}
+.quiz-option{
+  border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;
+  display:flex;align-items:center;gap:10px;background:var(--bg);
+}
+.quiz-option:hover{border-color:var(--accent)}
+.quiz-option.correct{border-color:var(--success);background:#ecfdf5}
+.quiz-option.wrong{border-color:var(--danger);background:#fef2f2}
+.notes{
+  background:color-mix(in srgb,var(--accent-soft),transparent 50%);
+  border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:24px;
+}
+.notes h4{margin:0 0 8px}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:720px){.notes-grid{grid-template-columns:1fr}}
+.notes ul{margin:8px 0 0 18px;color:var(--muted)}
+.kbd{font-family:var(--font-mono);background:var(--bg);border:1px solid var(--border);border-bottom-width:2px;padding:2px 6px;border-radius:6px;font-size:12px}
+.site-footer{
+  border-top:1px solid var(--border);padding:32px 0;color:var(--muted);font-size:14px;text-align:center;margin-top:40px;
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media print{
+  header.site-header,.sidebar,.header-actions,.btn,.progress-wrap{display:none!important}
+  body{background:white;color:black}
+ .section,.hero{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <div class="brand" aria-label="Prompt Masterclass 2026">
+      <div class="brand-mark" aria-hidden="true">AI</div>
+      <span>Prompt Masterclass 2026</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn ghost icon" id="menuToggle" aria-expanded="false" aria-controls="sidebar" aria-label="Toggle menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <button class="btn ghost icon" id="themeToggle" aria-pressed="false" aria-label="Toggle theme">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+      </button>
+      <button class="btn" id="printBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+        Print
+      </button>
+    </div>
+  </div>
+  <div class="progress-wrap" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+</header>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Table of contents">
+    <div class="toc-title">Masterclass Modules</div>
+    <ul class="toc-list" id="tocList">
+      <li><a href="#module-0"><span class="num">0</span> Foundations</a></li>
+      <li><a href="#module-1"><span class="num">1</span> Prompt Anatomy</a></li>
+      <li><a href="#module-2"><span class="num">2</span> Core Techniques</a></li>
+      <li><a href="#module-3"><span class="num">3</span> Control & Reliability</a></li>
+      <li><a href="#module-4"><span class="num">4</span> Advanced Workflows</a></li>
+      <li><a href="#module-5"><span class="num">5</span> Multimodal</a></li>
+      <li><a href="#module-6"><span class="num">6</span> Playbooks</a></li>
+      <li><a href="#module-7"><span class="num">7</span> Safety & Mastery</a></li>
+      <li><a href="#tools"><span class="num">8</span> Tools Directory</a></li>
+      <li><a href="#cheatsheet"><span class="num">★</span> Cheat Sheet</a></li>
+    </ul>
+  </aside>
+
+  <main id="main">
+    <section class="hero">
+      <span class="eyebrow">2026 Edition • Research-Backed</span>
+      <h1>How to Master AI Tools in 2026: Prompt Engineering from Scratch to Advanced</h1>
+      <p class="lede">A professional, hands-on masterclass. Learn how modern models think, how to structure prompts for reliability, and how to build real workflows that ship.</p>
+      <dl class="meta-grid">
+        <div class="meta-card"><dt>Duration</dt><dd>~3 hours</dd></div>
+        <div class="meta-card"><dt>Modules</dt><dd>9 modules</dd></div>
+        <div class="meta-card"><dt>Level</dt><dd>Beginner → Advanced</dd></div>
+        <div class="meta-card"><dt>Updated</dt><dd>June 2026</dd></div>
+      </dl>
+    </section>
+
+    <!-- MODULE 0 -->
+    <section class="section" id="module-0">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Module 0</div>
+          <h2 class="section-title">Foundations: What AI Tools Are in 2026</h2>
+        </div>
+        <span class="badge">20 min</span>
+      </div>
+      <div class="prose">
+        <p>2026 models are <strong>multimodal reasoning engines</strong> with 1M+ token context windows, built-in tool use, and persistent memory. They don’t “understand” like humans — they predict the most likely next token given patterns in training data and your prompt.</p>
+
+        <div class="grid-2">
+          <div>
+            <h3>How models think</h3>
+            <p>Tokens → embeddings → attention → prediction. Your prompt sets the prior. Clear constraints reduce variance. Reasoning models generate hidden chain-of-thought before answering.</p>
+          </div>
+          <div>
+            <h3>Tokens & Context</h3>
+            <p><strong>Token ≈ 3-4 characters</strong>. 1,000 tokens ≈ 750 words. Context window = max input + output. Put critical instructions at top <em>and</em> bottom.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Key Principles</strong>
+          Clarity beats cleverness. Models follow patterns, not intentions. Context is expensive — curate it. Always specify output format.
+        </div>
+
+        <div class="code-block">
+          <div class="toolbar">
+            <span>Prompt template</span>
+            <button class="copy-btn" data-copy>Copy</button>
+          </div>
+          <pre><code>## ROLE & GOAL
+You are a senior analyst.
+
+## CONTEXT
+Q3 board meeting, focus on risks.
+
+## INPUT
+###... document... ###
+
+## TASK
+Summarize in 5 bullets.
+
+## FORMAT
+Markdown list</code></pre>
+        </div>
+
+        <div class="exercise">
+          <div class="exercise-title">Mini Exercise</div>
+          <p>Rewrite this vague prompt: <code>Summarize the doc</code></p>
+          <button class="btn" data-toggle-solution aria-expanded="false" aria-controls="sol-0">Show solution</button>
+          <div class="solution" id="sol-0" hidden>
+            <p><strong>Improved:</strong> You are a senior analyst. Summarize the document below in 5 bullet points focused on risks and action items. Use plain English. Document: ###... ###</p>
+          </div>
+        </div>
+
+        <div class="notes">
+          <h4>Lesson Notes</h4>
+          <div class="notes-grid">
+            <div>
+              <strong>Core Concepts</strong>
+              <ul>
+                <li>Models predict next token</li>
+                <li>Tokens ~3-4 chars</li>
+                <li>Context window = working memory</li>
+                <li>Primacy + recency bias</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Formulas</strong>
+              <ul>
+                <li>ROLE → CONTEXT → INPUT → TASK → FORMAT</li>
+                <li>If unsure → say "I don't know"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional modules 1-7 would follow same structure -->
+    <!-- Tools Directory -->
+    <section class="section" id="tools">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Module 8</div>
+          <h2 class="section-title">AI Tools Directory 2026</h2>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Tool</th>
+              <th>Free Tier</th>
+              <th>Paid</th>
+              <th>Best For</th>
+              <th>Student Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chat</td>
+              <td><strong>ChatGPT</strong></td>
+              <td>Limited</td>
+              <td>$20/mo</td>
+              <td>All-round</td>
+              <td>ChatGPT Edu campus licenses</td>
+            </tr>
+            <tr>
+              <td>Chat</td>
+              <td><strong>Claude</strong></td>
+              <td>Limited</td>
+              <td>$20/mo</td>
+              <td>Long docs</td>
+              <td>Free tier for coursework</td>
+            </tr>
+            <tr>
+              <td>Chat</td>
+              <td><strong>Perplexity</strong></td>
+              <td>Yes</td>
+              <td>$20/mo</td>
+              <td>Citations</td>
+              <td>Free 1 year Pro for.edu</td>
+            </tr>
+            <tr>
+              <td>Coding</td>
+              <td><strong>GitHub Copilot</strong></td>
+              <td>Students</td>
+              <td>$10/mo</td>
+              <td>Completions</td>
+              <td>FREE via Student Pack</td>
+            </tr>
+            <tr>
+              <td>Coding</td>
+              <td><strong>Cursor</strong></td>
+              <td>Limited</td>
+              <td>$20/mo</td>
+              <td>AI IDE</td>
+              <td>50% off Pro</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Cheat Sheet -->
+    <section class="section" id="cheatsheet">
+      <h2 class="section-title">Printable Cheat Sheet</h2>
+      <div class="grid-2">
+        <div>
+          <h3>5-Part Prompt</h3>
+          <p>ROLE → CONTEXT → INPUT → TASK → FORMAT</p>
+        </div>
+        <div>
+          <h3>Temperature</h3>
+          <p>0-0.3 factual, 0.7+ creative</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © 2026 Prompt Engineering Masterclass. Built for learning.
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const setTheme = t => {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    themeToggle.setAttribute('aria-pressed', t==='dark');
+  };
+  setTheme(saved || (prefersDark? 'dark' : 'light'));
+  themeToggle.addEventListener('click', ()=>{
+    const cur = root.getAttribute('data-theme');
+    setTheme(cur === 'dark'? 'light' : 'dark');
+  });
+
+  // Progress bar
+  const progressBar = document.getElementById('progressBar');
+  const onScroll = ()=>{
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+
+  // Sidebar mobile
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const menuToggle = document.getElementById('menuToggle');
+  const closeSidebar = ()=>{
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('show');
+    menuToggle.setAttribute('aria-expanded','false');
+  };
+  const openSidebar = ()=>{
+    sidebar.classList.add('open');
+    backdrop.classList.add('show');
+    menuToggle.setAttribute('aria-expanded','true');
+  };
+  menuToggle.addEventListener('click', ()=>{
+    sidebar.classList.contains('open')? closeSidebar() : openSidebar();
+  });
+  backdrop.addEventListener('click', closeSidebar);
+
+  // Copy buttons
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const code = btn.nextElementSibling?.innerText || '';
+      navigator.clipboard.writeText(code).then(()=>{
+        btn.textContent='Copied!';
+        setTimeout(()=>btn.textContent='Copy',1800);
+      });
+    });
+  });
+
+  // Solution toggles
+  document.querySelectorAll('[data-toggle-solution]').forEach(btn=>{
+    const targetId = btn.getAttribute('aria-controls');
+    const target = document.getElementById(targetId);
+    btn.addEventListener('click', ()=>{
+      const expanded = btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded? 'Show solution' : 'Hide solution';
+      target.hidden = expanded;
+    });
+  });
+
+  // Print
+  document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+})();
+</script>
+</body>
+</html>
